@@ -54,8 +54,9 @@ class CountdownTimer {
 }
 const timer1 = new CountdownTimer({
   selector: "#timer-1",
-  targetDate: new Date("Jan 1, 2022"),
+  targetDate: new Date("Jan 1, 2021"),
 });
+
 // Colorswitch
 function colorSwitch() {
   const bodyRef = document.querySelector("body");
