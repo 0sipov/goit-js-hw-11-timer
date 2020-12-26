@@ -1,10 +1,15 @@
 body {
-  background: black;
   color: #a68547;
   font-family: "Langar", cursive;
+
+  background-image: url(https://99px.ru/sstorage/53/2015/11/tmb_150192_2378.jpg);
+  background-repeat: no-repeat;
+  background-size: 1500px;
+  background-position-y: 15%;
+  background-position-x: 50%;
 }
 h1 {
-  margin-top: 80px;
+  margin-top: 50px;
   text-align: center;
 }
 .timer {
