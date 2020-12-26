@@ -48,7 +48,6 @@ class CountdownTimer {
       hoursRef.textContent = hours;
       minsRef.textContent = mins;
       secsRef.textContent = secs;
-      colorSwitch();
     }, 1000);
   }
 }
@@ -60,7 +59,6 @@ const timer1 = new CountdownTimer({
 // Colorswitch
 function colorSwitch() {
   const bodyRef = document.querySelector("body");
-  console.dir(bodyRef.style);
   function getRandomColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -70,4 +68,8 @@ function colorSwitch() {
     return color;
   }
   bodyRef.style.color = getRandomColor();
+  bodyRef.style.transition = "color 2s ease";
 }
+setInterval(() => {
+  colorSwitch();
+}, 2000);
