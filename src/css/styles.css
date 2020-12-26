@@ -4,7 +4,7 @@ body {
 
   background-image: url(https://99px.ru/sstorage/53/2015/11/tmb_150192_2378.jpg);
   background-repeat: no-repeat;
-  background-size: 1500px;
+  background-size: cover;
   background-position-y: 15%;
   background-position-x: 50%;
 }
