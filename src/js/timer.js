@@ -48,10 +48,25 @@ class CountdownTimer {
       hoursRef.textContent = hours;
       minsRef.textContent = mins;
       secsRef.textContent = secs;
+      colorSwitch();
     }, 1000);
   }
 }
 const timer1 = new CountdownTimer({
   selector: "#timer-1",
-  targetDate: new Date("Jan 1, 2021"),
+  targetDate: new Date("Jan 1, 2022"),
 });
+// Colorswitch
+function colorSwitch() {
+  const bodyRef = document.querySelector("body");
+  console.dir(bodyRef.style);
+  function getRandomColor() {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i = i + 1) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  bodyRef.style.color = getRandomColor();
+}
