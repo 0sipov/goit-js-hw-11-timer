@@ -64,15 +64,18 @@ class CountdownTimer {
     });
   }
   start() {
+    this.startBtnRef.disabled = "disabled";
     this.init();
     this.timerIntervalId = setInterval(() => {
       this.init();
     }, 1000);
   }
   stop() {
+    this.startBtnRef.disabled = "";
     clearInterval(this.timerIntervalId);
   }
   clear() {
+    this.startBtnRef.disabled = "";
     clearInterval(this.timerIntervalId);
     this.daysRef.textContent = "";
     this.hoursRef.textContent = "";
