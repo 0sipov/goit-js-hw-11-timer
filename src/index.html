@@ -9,24 +9,33 @@
 </head>
 <body>
     <main>
-      <h1 class="">Time left until the New Year</h1>
+      <h1>Time left until the New Year</h1>
       <article class="timer" id="timer-1">
-          <div class="field">
-            <span class="value" data-value="days">&nbsp</span>
-            <span class="label">Days</span>
+          <div class="clock">
+            <div class="field">
+              <span class="value" data-value="days">&nbsp</span>
+              <span class="label">Days</span>
+            </div>
+            <div class="field">
+              <span class="value" data-value="hours">&nbsp</span>
+              <span class="label">Hours</span>
+            </div>
+            <div class="field">
+              <span class="value" data-value="mins">&nbsp</span>
+              <span class="label">Minutes</span>
+            </div>
+            <div class="field">
+              <span class="value" data-value="secs">&nbsp</span>
+              <span class="label">Seconds</span>
+            </div>
           </div>
-          <div class="field">
-            <span class="value" data-value="hours">&nbsp</span>
-            <span class="label">Hours</span>
-          </div>
-          <div class="field">
-            <span class="value" data-value="mins">&nbsp</span>
-            <span class="label">Minutes</span>
-          </div>
-          <div class="field">
-            <span class="value" data-value="secs">&nbsp</span>
-            <span class="label">Seconds</span>
-          </div>
+          <form class="menu" action="">
+            <button type="button" class="start">Start</button>
+            <button type="button" class="stop">Stop</button>
+            <button type="button" class="clear">Clear</button>
+            <input type="text" class="new-date-inpt" placeholder="Jan 1, 2021">
+            <button type="button" class="new-date">New date</button>
+          </form>
       </article>
     </main>
 </body>

@@ -30,46 +30,76 @@ class CountdownTimer {
   constructor({ selector, targetDate }) {
     this.targetDate = targetDate;
 
-    const daysRef = document.querySelector(`${selector} .value[data-value='days']`);
-    const hoursRef = document.querySelector(`${selector} .value[data-value='hours']`);
-    const minsRef = document.querySelector(`${selector} .value[data-value='mins']`);
-    const secsRef = document.querySelector(`${selector} .value[data-value='secs']`);
+    this.timerRef = document.getElementById(selector.slice(1));
+    this.daysRef = document.querySelector(`${selector} .value[data-value='days']`);
+    this.hoursRef = document.querySelector(`${selector} .value[data-value='hours']`);
+    this.minsRef = document.querySelector(`${selector} .value[data-value='mins']`);
+    this.secsRef = document.querySelector(`${selector} .value[data-value='secs']`);
 
-    setInterval(() => {
-      let currentDate = Date.now();
-      let timeBetween = this.targetDate - currentDate;
+    this.menuRef = document.querySelector(`${selector} form.menu`);
+    this.startBtnRef = document.querySelector(`${selector} button.start`);
+    this.stopBtnRef = document.querySelector(`${selector} button.stop`);
+    this.clearBtnRef = document.querySelector(`${selector} button.clear`);
+    this.createNewDateBtnRef = document.querySelector(`${selector} button.new-date`);
+    this.createNewDateInptRef = document.querySelector(`${selector} input.new-date-inpt`);
 
-      let days = Math.floor(timeBetween / (1000 * 60 * 60 * 24));
-      let hours = Math.floor((timeBetween % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let mins = Math.floor((timeBetween % (1000 * 60 * 60)) / (1000 * 60));
-      let secs = Math.floor((timeBetween % (1000 * 60)) / 1000);
-
-      daysRef.textContent = days;
-      hoursRef.textContent = hours;
-      minsRef.textContent = mins;
-      secsRef.textContent = secs;
+    this.timerRef.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (event.target === this.startBtnRef) {
+        this.start();
+      }
+      if (event.target === this.stopBtnRef) {
+        this.stop();
+      }
+      if (event.target === this.clearBtnRef) {
+        this.clear();
+      }
+      if (event.target === this.createNewDateBtnRef) {
+        this.createNewDate();
+      }
+    });
+    this.menuRef.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.createNewDate();
+    });
+  }
+  start() {
+    this.init();
+    this.timerIntervalId = setInterval(() => {
+      this.init();
     }, 1000);
   }
+  stop() {
+    clearInterval(this.timerIntervalId);
+  }
+  clear() {
+    clearInterval(this.timerIntervalId);
+    this.daysRef.textContent = "";
+    this.hoursRef.textContent = "";
+    this.minsRef.textContent = "";
+    this.secsRef.textContent = "";
+  }
+  createNewDate() {
+    this.newDate = this.createNewDateInptRef.value;
+    this.targetDate = new Date(this.newDate);
+  }
+  init() {
+    this.currentDate = Date.now();
+    this.timeBetween = this.targetDate - this.currentDate;
+
+    this.days = Math.floor(this.timeBetween / (1000 * 60 * 60 * 24));
+    this.hours = Math.floor((this.timeBetween % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    this.mins = Math.floor((this.timeBetween % (1000 * 60 * 60)) / (1000 * 60));
+    this.secs = Math.floor((this.timeBetween % (1000 * 60)) / 1000);
+
+    this.daysRef.textContent = this.days;
+    this.hoursRef.textContent = this.hours;
+    this.minsRef.textContent = this.mins;
+    this.secsRef.textContent = this.secs;
+  }
 }
+
 const timer1 = new CountdownTimer({
   selector: "#timer-1",
   targetDate: new Date("Jan 1, 2021"),
 });
-
-// Colorswitch
-function colorSwitch() {
-  const bodyRef = document.querySelector("body");
-  bodyRef.style.transition = "color 2s ease";
-  function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i = i + 1) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-  bodyRef.style.color = getRandomColor();
-}
-setInterval(() => {
-  colorSwitch();
-}, 2000);
