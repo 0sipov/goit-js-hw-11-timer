@@ -103,3 +103,5 @@ const timer1 = new CountdownTimer({
   selector: "#timer-1",
   targetDate: new Date("Jan 1, 2021"),
 });
+
+timer1.start();
