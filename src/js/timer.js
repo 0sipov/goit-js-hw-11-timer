@@ -104,13 +104,7 @@ class CountdownTimer {
 
 const timer1 = new CountdownTimer({
   selector: "#timer-1",
-  targetDate: new Date("Jan 1, 2021 00:00:00"),
+  targetDate: new Date(`Jan 1, ${new Date(Date.now()).getFullYear() + 1} 00:00:00`),
 });
 
 timer1.start();
-
-setInterval(() => {
-  if (timer1.targetDate <= timer1.currentDate) {
-    timer1.clear();
-  }
-}, 1000);

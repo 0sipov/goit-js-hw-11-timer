@@ -3,6 +3,7 @@ body {
   font-family: "Langar", cursive;
 
   background-image: url(https://99px.ru/sstorage/53/2015/11/tmb_150192_2378.jpg);
+  min-height: 1000px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: 15%;
@@ -23,14 +24,19 @@ h1 {
   padding: 20px;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .timer .menu {
   padding: 20px;
   text-align: center;
 }
 .field {
+  margin-bottom: 20px;
   border: 4px solid;
   border-radius: 20px;
+}
+.field:nth-child(2) {
+  flex: 0 3 0;
 }
 .field .value,
 .field .label {
